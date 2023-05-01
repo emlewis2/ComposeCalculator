@@ -1,0 +1,8 @@
+dependencies {
+    implementation libs.bundles.room
+    implementation libs.bundles.base
+    testImplementation libs.bundles.test
+    androidTestImplementation libs.bundles.android.test
+    debugImplementation libs.bundles.debug
+    kapt libs.bundles.kapt
+}
