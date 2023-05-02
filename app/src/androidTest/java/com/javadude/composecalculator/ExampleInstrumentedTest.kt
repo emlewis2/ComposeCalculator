@@ -12,6 +12,8 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.javadude.composecalculator.ui.theme.ComposeCalculatorTheme
 import junit.framework.TestCase.assertEquals
+import kotlinx.coroutines.flow.MutableStateFlow
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,11 +23,11 @@ class ExampleInstrumentedTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    // add your instrumented tests here
-    @Test
-    fun printSemanticTree() {
-        val viewModel = CalculatorViewModel()
+    private val viewModel = CalculatorViewModel()
 
+    // add your unit tests here
+    @Before
+    fun setup() {
         composeTestRule.setContent {
             ComposeCalculatorTheme {
                 Surface(color = MaterialTheme.colors.background) {
@@ -43,6 +45,30 @@ class ExampleInstrumentedTest {
                 }
             }
         }
+    }
+
+    // add your instrumented tests here
+    @Test
+    fun printSemanticTree() {
+//        val viewModel = CalculatorViewModel()
+
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = {paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
 //        composeTestRule
 //            .onNodeWithTag("calculator")
@@ -57,25 +83,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testUiText() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = {paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = {paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         val buttons = listOf("CE", "C", "DEL", "/", "7", "8", "9", "*", "4", "5",
         "6", "-", "1", "2", "3", "+", "+/-", "0", ".", "=")
@@ -125,25 +151,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testUiButtons() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = { paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = { paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         val numbers = listOf("0", "1", "3", "4", "5", "6", "7", "8", "9", "0", "2")
 
@@ -187,25 +213,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testSequenceOne() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = { paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = { paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         // 73 + 8 - 15 * 9 + 8 = 602
         // Should fail since the subtraction method is incorrect
@@ -226,25 +252,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testSequenceTwo() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = { paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = { paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         // 23 * 6 / 5 + 0.41 = 28.01
         // Should fail since button "2" is implemented incorrect
@@ -265,25 +291,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testSequenceThree() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = { paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = { paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         // 19 * 3 + 48 / 7 * 6 / 5 = 18
         composeTestRule.onNodeWithTag("button1").performClick()
@@ -305,25 +331,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testClearButton() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = { paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = { paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         composeTestRule.onNodeWithTag("button5").performClick()
         composeTestRule.onNodeWithTag("button8").performClick()
@@ -335,25 +361,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testClearEntryButton() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = { paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = { paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         composeTestRule.onNodeWithTag("button5").performClick()
         composeTestRule.onNodeWithTag("button8").performClick()
@@ -367,25 +393,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testDeleteButton() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = { paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = { paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         // Should fail since delete button is implemented incorrectly in logic
         composeTestRule.onNodeWithTag("button5").performClick()
@@ -397,25 +423,25 @@ class ExampleInstrumentedTest {
 
     @Test
     fun testNegateButton() {
-        val viewModel = CalculatorViewModel()
-
-        composeTestRule.setContent {
-            ComposeCalculatorTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    val display by viewModel.display.collectAsState(initial = "")
-                    Scaffold(
-                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
-                        content = { paddingValues ->
-                            Calculator(
-                                display = display,
-                                viewModel = viewModel,
-                                modifier = Modifier.padding(paddingValues)
-                            )
-                        }
-                    )
-                }
-            }
-        }
+//        val viewModel = CalculatorViewModel()
+//
+//        composeTestRule.setContent {
+//            ComposeCalculatorTheme {
+//                Surface(color = MaterialTheme.colors.background) {
+//                    val display by viewModel.display.collectAsState(initial = "")
+//                    Scaffold(
+//                        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator)) }) },
+//                        content = { paddingValues ->
+//                            Calculator(
+//                                display = display,
+//                                viewModel = viewModel,
+//                                modifier = Modifier.padding(paddingValues)
+//                            )
+//                        }
+//                    )
+//                }
+//            }
+//        }
 
         composeTestRule.onNodeWithTag("button5").performClick()
         composeTestRule.onNodeWithTag("button+/-").performClick()
