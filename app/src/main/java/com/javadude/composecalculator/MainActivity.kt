@@ -109,7 +109,7 @@ fun Calculator(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .testTag("calculatorColumn")
+                .testTag("display")
         )
         CalculatorRow {
             CalculatorButton(stringId = R.string.clear_entry, onClick = onClearEntry)
@@ -175,6 +175,7 @@ fun RowScope.CalculatorButton(
         .background(color = Color(100, 181, 246))
         .weight(1f)
         .fillMaxHeight()
+        .testTag("button$text")
 ) {
     Text(
         text = text,
@@ -183,6 +184,7 @@ fun RowScope.CalculatorButton(
         modifier = Modifier
             .padding(4.dp)
             .align(Alignment.Center)
+//            .testTag("button$text")
     )
 }
 
