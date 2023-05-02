@@ -81,7 +81,7 @@ fun Calculator(
     onPlusMinus = viewModel::negate,
     onDecimal = viewModel::decimal,
     onNumber = viewModel::addDigit,
-    modifier = modifier.fillMaxSize().testTag("calculator")
+    modifier = modifier.fillMaxSize()
 )
 
 // so we can test the calculator UI without a view model
@@ -151,7 +151,6 @@ fun ColumnScope.CalculatorRow(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.Center,
     modifier = Modifier
-        .testTag("calculatorRow")
         .fillMaxWidth()
         .weight(1f),
     content = content
@@ -184,7 +183,6 @@ fun RowScope.CalculatorButton(
         modifier = Modifier
             .padding(4.dp)
             .align(Alignment.Center)
-//            .testTag("button$text")
     )
 }
 

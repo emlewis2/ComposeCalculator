@@ -20,20 +20,12 @@ class ExampleUnitTest {
     }
     @Test
     fun `test add digit`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(5)
         assertEquals("5", display0.value)
     }
 
     @Test
     fun `test equals`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(8)
         logic.equals()
         assertEquals("8.0", display0.value)
@@ -41,10 +33,6 @@ class ExampleUnitTest {
 
     @Test
     fun `test addition`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(1)
         logic.addDigit(2)
         logic.plus()
@@ -55,10 +43,6 @@ class ExampleUnitTest {
 
     @Test
     fun `test subtraction`() {      // Should fail since logic is wrong for minus
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(1)
         logic.addDigit(2)
         logic.minus()
@@ -69,10 +53,6 @@ class ExampleUnitTest {
 
     @Test
     fun `test multiplication`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(7)
         logic.addDigit(6)
         logic.times()
@@ -84,10 +64,6 @@ class ExampleUnitTest {
 
     @Test
     fun `test division`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(9)
         logic.addDigit(3)
         logic.divide()
@@ -99,10 +75,6 @@ class ExampleUnitTest {
 
     @Test
     fun `test remove digit`() {      // Should fail since remove digit removes two numbers
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(7)
         logic.addDigit(6)
         logic.addDigit(3)
@@ -110,23 +82,8 @@ class ExampleUnitTest {
         assertEquals("76", display0.value)
     }
 
-//    @Test
-//    fun `test on display changed`() {      // Should fail since logic is wrong for minus
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
-//        logic.addDigit(7)
-//        print(logic.onDisplayChanged)
-//        assertEquals("7", logic.onDisplayChanged.toString())
-//    }
-
     @Test
     fun `test clear`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(7)
         logic.plus()
         logic.addDigit(6)
@@ -138,10 +95,6 @@ class ExampleUnitTest {
 
     @Test
     fun `test clear entry`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(7)
         logic.plus()
         logic.addDigit(6)
@@ -154,10 +107,6 @@ class ExampleUnitTest {
 
     @Test
     fun `test decimal`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(7)
         logic.decimal()
         logic.addDigit(6)
@@ -167,19 +116,10 @@ class ExampleUnitTest {
 
     @Test
     fun `test negate`() {
-//        val display0 = MutableStateFlow("")
-//        val logic = CalculatorLogic {
-//            display0.value = it
-//        }
         logic.addDigit(7)
         logic.negate()
         assertEquals("-7", display0.value)
         logic.equals()
         assertEquals("-7.0", display0.value)
     }
-
-
-
-
-
 }
