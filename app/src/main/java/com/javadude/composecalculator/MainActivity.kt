@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,10 +48,11 @@ class MainActivity : ComponentActivity() {
                     val display by viewModel.display.collectAsState(initial = "")
                     Scaffold(
                         topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.calculator))}) },
-                        content = {
+                        content = {paddingValues ->
                             Calculator(
                                 display = display,
-                                viewModel = viewModel
+                                viewModel = viewModel,
+                                modifier = Modifier.padding(paddingValues)
                             )
                         }
                     )
@@ -64,7 +66,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Calculator(
     display: String,
-    viewModel: CalculatorViewModel
+    viewModel: CalculatorViewModel,
+    modifier: Modifier,
 ) = Calculator(
     display = display,
     onClearEntry = viewModel::clearEntry,
@@ -78,7 +81,7 @@ fun Calculator(
     onPlusMinus = viewModel::negate,
     onDecimal = viewModel::decimal,
     onNumber = viewModel::addDigit,
-    modifier = Modifier.fillMaxSize()
+    modifier = modifier.fillMaxSize().testTag("calculator")
 )
 
 // so we can test the calculator UI without a view model
@@ -106,6 +109,7 @@ fun Calculator(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
+                .testTag("calculatorColumn")
         )
         CalculatorRow {
             CalculatorButton(stringId = R.string.clear_entry, onClick = onClearEntry)
@@ -147,6 +151,7 @@ fun ColumnScope.CalculatorRow(
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.Center,
     modifier = Modifier
+        .testTag("calculatorRow")
         .fillMaxWidth()
         .weight(1f),
     content = content

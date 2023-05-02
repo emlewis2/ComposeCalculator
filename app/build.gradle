@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -50,6 +51,7 @@ android {
 
 dependencies {
     implementation platform("androidx.compose:compose-bom:$compose_bom_version") // ADDED
+    androidTestImplementation platform("androidx.compose:compose-bom:$compose_bom_version") // ADDED
 
     testImplementation "app.cash.turbine:turbine:0.7.0"
 
@@ -66,7 +68,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4"
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation "androidx.compose.ui:ui-tooling"
     debugImplementation "androidx.compose.ui:ui-test-manifest"
 }
